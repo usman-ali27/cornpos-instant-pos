@@ -1,7 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, PlayCircle } from "lucide-react";
+import { useState } from "react";
+import DemoForm from "./DemoForm";
+import posDashboard from "@/assets/pos-dashboard.jpg";
 
 const Hero = () => {
+  const [isDemoFormOpen, setIsDemoFormOpen] = useState(false);
+
   return (
     <section className="relative bg-gradient-to-br from-background via-background to-primary/5 py-20 sm:py-32">
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
@@ -28,9 +33,14 @@ const Hero = () => {
               Start Free Trial
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-6 hover:scale-105 transition-transform">
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="text-lg px-8 py-6 hover:scale-105 transition-transform"
+              onClick={() => setIsDemoFormOpen(true)}
+            >
               <PlayCircle className="mr-2 h-5 w-5" />
-              Watch Demo
+              Book Demo
             </Button>
           </div>
 
@@ -38,14 +48,18 @@ const Hero = () => {
             <div className="relative mx-auto max-w-5xl">
               <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-orange-500/20 rounded-3xl blur-2xl opacity-75"></div>
               <div className="relative bg-card border border-border rounded-2xl p-8 shadow-2xl">
-                <div className="aspect-video bg-gradient-to-br from-primary/10 to-orange-500/10 rounded-xl flex items-center justify-center">
-                  <div className="text-6xl text-primary/50">🏪</div>
-                </div>
+                <img 
+                  src={posDashboard} 
+                  alt="DreamsPOS Dashboard"
+                  className="w-full h-auto rounded-xl"
+                />
               </div>
             </div>
           </div>
         </div>
       </div>
+      
+      <DemoForm isOpen={isDemoFormOpen} onClose={() => setIsDemoFormOpen(false)} />
     </section>
   );
 };
