@@ -1,64 +1,77 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, PlayCircle } from "lucide-react";
 import { useState } from "react";
+import { Utensils, ShoppingBag, Truck, Car } from "lucide-react";
 import DemoForm from "./DemoForm";
-import posDashboard from "@/assets/pos-dashboard.jpg";
+import restaurantGuy from "@/assets/restaurant-guy.png";
 
 const Hero = () => {
   const [isDemoFormOpen, setIsDemoFormOpen] = useState(false);
 
   return (
-    <section className="relative bg-gradient-to-br from-background via-background to-primary/5 py-20 sm:py-32">
-      <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <div className="animate-fade-in">
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-foreground mb-6">
-              Modern POS System for
-              <span className="text-primary bg-gradient-to-r from-primary to-orange-500 bg-clip-text text-transparent">
-                {" "}Your Business
-              </span>
-            </h1>
-          </div>
-          
-          <div className="animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            <p className="text-xl sm:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-              Streamline your business operations with our comprehensive Point of Sale solution. 
-              Manage inventory, process payments, and generate reports effortlessly.
-            </p>
-          </div>
+    <section className="relative py-5 text-center">
+      <div className="max-w-7xl bg-[#fdf9f1] p-8 rounded-[5%] mx-auto">
+        {/* Top tagline */}
+        <div className="inline-flex items-center bg-white px-5 py-2 rounded-full shadow-sm gap-2">
+          <span className="w-3 h-3 rounded-full bg-blue-400 shadow-[0_0_10px_2px_rgba(59,130,246,0.5)]"></span>
+          <p className="text-sm font-medium text-gray-600">
+            Manage your entire business in one place
+          </p>
+        </div>
 
-          <div className="animate-fade-in flex flex-col sm:flex-row gap-4 justify-center items-center mb-16" style={{ animationDelay: "0.4s" }}>
-            <Button size="lg" className="text-lg px-8 py-6 hover:scale-105 transition-transform">
-              Start Free Trial
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="text-lg px-8 py-6 hover:scale-105 transition-transform"
-              onClick={() => setIsDemoFormOpen(true)}
-            >
-              <PlayCircle className="mr-2 h-5 w-5" />
-              Book Demo
-            </Button>
-          </div>
 
-          <div className="animate-scale-in" style={{ animationDelay: "0.6s" }}>
-            <div className="relative mx-auto max-w-5xl">
-              <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-orange-500/20 rounded-3xl blur-2xl opacity-75"></div>
-              <div className="relative bg-card border border-border rounded-2xl p-8 shadow-2xl">
-                <img 
-                  src={posDashboard} 
-                  alt="DreamsPOS Dashboard"
-                  className="w-full h-auto rounded-xl"
-                />
-              </div>
-            </div>
-          </div>
+        {/* Main Heading */}
+        <h1 className="text-3xl sm:text-5xl font-extrabold text-blue-900 my-4">
+          Not Just a POS
+        </h1>
+
+        <h2 className="text-2xl sm:text-4xl font-bold text-blue-900 mb-6">
+          The Complete Restaurant POS Solution
+        </h2>
+
+        {/* Sub description */}
+        <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto mb-10 leading-relaxed">
+          Streamline your orders, manage inventory, and boost customer satisfaction —
+          all from one smart system. More than just a POS, it's the recipe for smooth
+          operations and business growth
+        </p>
+
+        {/* POS type buttons */}
+        <div className="flex flex-wrap justify-center gap-3 mb-10">
+          <Button className="bg-orange-500 hover:bg-orange-600 text-white px-5 py-3 rounded-md text-base flex items-center gap-2">
+            <Utensils className="h-4 w-4" /> Dine In
+          </Button>
+          <Button className="bg-orange-500 hover:bg-orange-600 text-white px-5 py-3 rounded-md text-base flex items-center gap-2">
+            <ShoppingBag className="h-4 w-4" /> Pickup
+          </Button>
+          <Button className="bg-orange-500 hover:bg-orange-600 text-white px-5 py-3 rounded-md text-base flex items-center gap-2">
+            <Truck className="h-4 w-4" /> Delivery
+          </Button>
+          <Button className="bg-orange-500 hover:bg-orange-600 text-white px-5 py-3 rounded-md text-base flex items-center gap-2">
+            <Car className="h-4 w-4" /> Drive Thru
+          </Button>
+        </div>
+
+        {/* Demo Button */}
+        <div className="mb-12">
+          <Button
+            size="lg"
+            onClick={() => setIsDemoFormOpen(true)}
+            className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 text-lg rounded-md"
+          >
+            Book a Free Demo
+          </Button>
+        </div>
+
+        {/* Restaurant Guy Image */}
+        <div className="flex justify-center">
+          <img
+            src={restaurantGuy}
+            alt="Restaurant Guy"
+            className="w-[300px] sm:w-[400px] h-auto"
+          />
         </div>
       </div>
-      
+
       <DemoForm isOpen={isDemoFormOpen} onClose={() => setIsDemoFormOpen(false)} />
     </section>
   );
